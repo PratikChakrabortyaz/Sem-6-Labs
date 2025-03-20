@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Magazine Cover</title>
+</head>
+<body style="background-color: {{ background_color }};">
+    <h1>Magazine Cover Preview</h1>
+
+    {% if image %}
+        <!-- Correct way to display the image -->
+        <img src="{{ MEDIA_URL }}{{ image.name }}" alt="Magazine Cover Image" style="max-width: 100%; height: auto;">
+    {% else %}
+        <p>No image uploaded.</p>
+    {% endif %}
+
+    <div>
+        <p><strong>Text:</strong> {{ text }}</p>
+        <p><strong>Font Size:</strong> {{ font_size }}</p>
+        <p><strong>Font Color:</strong> {{ font_color }}</p>
+    </div>
+
+    <a href="{% url 'magazine_cover_form' %}">Go Back</a>
+</body>
+</html>

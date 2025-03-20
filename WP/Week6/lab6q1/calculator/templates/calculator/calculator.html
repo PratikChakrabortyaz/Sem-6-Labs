@@ -1,0 +1,38 @@
+<!-- calculator/templates/calculator/calculator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+</head>
+<body>
+    <h1>Basic Calculator</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="num1">First Number:</label>
+        <input type="number" id="num1" name="num1" required>
+        <br>
+        
+        <label for="num2">Second Number:</label>
+        <input type="number" id="num2" name="num2" required>
+        <br>
+
+        <label for="operation">Select Operation:</label>
+        <select name="operation" id="operation">
+            <option value="add">Addition</option>
+            <option value="subtract">Subtraction</option>
+            <option value="multiply">Multiplication</option>
+            <option value="divide">Division</option>
+        </select>
+        <br>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if result is not none %}
+        <h2>Result: {{ result }}</h2>
+    {% endif %}
+</body>
+</html>

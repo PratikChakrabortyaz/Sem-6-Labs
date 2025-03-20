@@ -1,0 +1,39 @@
+<!-- magazine/templates/magazine/magazine_cover_form.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magazine Cover Generator</title>
+    <link rel="stylesheet" href="{% static 'magazine/style.css' %}">
+</head>
+<body>
+    <h1>Create Your Magazine Cover</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <label for="image">Upload Image:</label>
+        <input type="file" name="image" accept="image/*" required>
+        <br>
+
+        <label for="background_color">Background Color:</label>
+        <input type="color" name="background_color" value="#ffffff" required>
+        <br>
+
+        <label for="text">Text for Cover:</label>
+        <input type="text" name="text" required>
+        <br>
+
+        <label for="font_size">Font Size (px):</label>
+        <input type="number" name="font_size" value="40" required>
+        <br>
+
+        <label for="font_color">Font Color:</label>
+        <input type="color" name="font_color" value="#000000" required>
+        <br>
+
+        <button type="submit">Generate Cover</button>
+    </form>
+</body>
+</html>

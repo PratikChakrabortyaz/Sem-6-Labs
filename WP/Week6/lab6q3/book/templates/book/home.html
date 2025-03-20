@@ -1,0 +1,21 @@
+<!-- templates/book/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Information</title>
+</head>
+<body>
+    <h1>Book Information</h1>
+    <h2>Book Title: The Great Adventure</h2>
+    <p><strong>Cover:</strong> (Book Cover)</p>
+    <nav>
+        <ul>
+            <li><a href="{% url 'metadata' %}">Metadata</a></li>
+            <li><a href="{% url 'reviews' %}">Reviews</a></li>
+            <li><a href="{% url 'publisher_info' %}">Publisher Info</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
