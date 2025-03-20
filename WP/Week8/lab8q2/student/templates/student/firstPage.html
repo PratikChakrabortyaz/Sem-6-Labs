@@ -1,0 +1,29 @@
+<!-- student/templates/student/firstPage.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+</head>
+<body>
+    <h1>Enter Student Information</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="roll">Roll Number:</label>
+        <input type="text" id="roll" name="roll" required><br><br>
+
+        <label for="subject">Select Subject:</label>
+        <select name="subject" id="subject">
+            {% for subject in subjects %}
+                <option value="{{ subject }}">{{ subject }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

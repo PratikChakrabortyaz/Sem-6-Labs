@@ -1,0 +1,25 @@
+<!-- car/templates/car/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Car Manufacturer</title>
+</head>
+<body>
+    <h1>Select Car Manufacturer</h1>
+    <form action="{% url 'result' %}" method="get">
+        <label for="manufacturer">Select Manufacturer:</label>
+        <select name="manufacturer" id="manufacturer">
+            {% for manufacturer in car_manufacturers %}
+                <option value="{{ manufacturer }}">{{ manufacturer }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="model">Enter Model Name:</label>
+        <input type="text" name="model" id="model" required>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
