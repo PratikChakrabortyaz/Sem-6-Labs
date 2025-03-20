@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Bio-Data Form</title>
+  <link rel="stylesheet" href="lab2q1style.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Student Bio-Data Form</h2>
+    <form action="" method="post">
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone-number"> Phone Number</label>
+        <input type="tel" id="phone-number" name="phone-number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="5" cols="35" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="courses">Courses and Marks:</label>
+        <table>
+          <thead>
+            <tr>
+              <th>Course</th>
+              <th>Marks Obtained</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="course1" required></td>
+              <td><input type="number" name="marks1" required></td>
+              <td><input type="text" name="grade1" required></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="course2" required></td>
+              <td><input type="number" name="marks2" required></td>
+              <td><input type="text" name="grade2" required></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="course3"></td>
+              <td><input type="number" name="marks3"></td>
+              <td><input type="text" name="grade3"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
