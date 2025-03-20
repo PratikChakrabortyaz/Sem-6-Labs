@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Clock & Daily Wishes</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            background-color: black;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, red,blue);
+            color: white;
+        }
+        .greeting {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: rgba(28, 129, 62, 0.5);
+            border-radius: 15px;
+            width: 80%;
+            max-width: 500px;
+        }
+        .clock {
+            font-size: 3em;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(113, 139, 42, 0.5);
+            border-radius: 15px;
+            width: 80%;
+            max-width: 500px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="greeting" id="greeting">
+
+        </div>
+
+        <div class="clock" id="clock">
+
+        </div>
+    </div>
+
+
+
+    <script>
+
+        function wishUser() {
+            const currentHour = new Date().getHours();
+            let greetingMessage = "";
+
+            if (currentHour >= 0 && currentHour < 12) {
+                greetingMessage = "Good Morning!";
+            } else if (currentHour >= 12 && currentHour < 18) {
+                greetingMessage = "Good Afternoon!";
+            } else {
+                greetingMessage = "Good Evening!";
+            }
+
+            document.getElementById("greeting").textContent = greetingMessage;
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            
+            document.getElementById("clock").textContent = timeString;
+        }
+
+        wishUser();
+
+        setInterval(updateClock, 1000);
+
+    </script>
+
+</body>
+</html>

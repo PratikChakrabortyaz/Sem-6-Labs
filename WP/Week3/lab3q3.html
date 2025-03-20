@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Your Grade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; 
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #00796b;
+        }
+        label {
+            font-size: 16px;
+            margin: 10px 0;
+            display: block;
+            text-align: left;
+        }
+        input[type="number"] {
+            padding: 8px;
+            width: 100%;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 15px;
+            font-size: 18px;
+            border: none;
+            background-color: #e53935; 
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #c62828;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #00796b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Calculate Your Grade</h2>
+        <form id="grade-form">
+            <label for="subject1">Enter Marks for Subject 1:</label>
+            <input type="number" id="subject1" min="0" max="100" required>
+
+            <label for="subject2">Enter Marks for Subject 2:</label>
+            <input type="number" id="subject2" min="0" max="100" required>
+
+            <label for="subject3">Enter Marks for Subject 3:</label>
+            <input type="number" id="subject3" min="0" max="100" required>
+
+            <label for="subject4">Enter Marks for Subject 4:</label>
+            <input type="number" id="subject4" min="0" max="100" required>
+
+            <button type="button" onclick="calculateGrade()">Calculate Grade</button>
+        </form>
+
+        <div class="result" id="result">
+        </div>
+    </div>
+
+
+
+    <script>
+
+        function calculateGrade() {
+            const subject1 = parseFloat(document.getElementById('subject1').value);
+            const subject2 = parseFloat(document.getElementById('subject2').value);
+            const subject3 = parseFloat(document.getElementById('subject3').value);
+            const subject4 = parseFloat(document.getElementById('subject4').value);
+
+            if (isNaN(subject1) || isNaN(subject2) || isNaN(subject3) || isNaN(subject4) || subject1 < 0 || subject2 < 0 || subject3 < 0 || subject4 < 0||subject1 > 100 || subject2 > 100 || subject3 > 100 || subject4 > 100) {
+                document.getElementById('result').innerHTML = 'Please enter valid marks (no negative values or values over 100).';
+                return;
+            }
+
+            const average = (subject1 + subject2 + subject3 + subject4) / 4;
+
+            let grade = '';
+            if (average > 90) {
+                grade = 'A';
+            } else if (average > 80) {
+                grade = 'B';
+            } else if (average > 70) {
+                grade = 'C';
+            } else if (average > 60) {
+                grade = 'D';
+            } else {
+                grade = 'F'; 
+            }
+
+            document.getElementById('result').innerHTML = `Average Marks: ${average.toFixed(2)} <br> Grade: ${grade}`;
+        }
+    </script>
+
+</body>
+</html>
