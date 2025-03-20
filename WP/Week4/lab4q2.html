@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator using jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: 220px;
+            height: 40px;
+            font-size: 20px;
+            text-align: right;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+        }
+        button:hover {
+            background-color: #e0e0e0;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .clear-btn {
+            width: 110px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+
+        <div class="row">
+            <button class="clear-btn" id="clear">C</button>
+            <button id="divide">/</button>
+        </div>
+
+        <div class="row">
+            <button class="num">7</button>
+            <button class="num">8</button>
+            <button class="num">9</button>
+            <button id="multiply">*</button>
+        </div>
+
+        <div class="row">
+            <button class="num">4</button>
+            <button class="num">5</button>
+            <button class="num">6</button>
+            <button id="subtract">-</button>
+        </div>
+
+        <div class="row">
+            <button class="num">1</button>
+            <button class="num">2</button>
+            <button class="num">3</button>
+            <button id="add">+</button>
+        </div>
+
+        <div class="row">
+            <button class="num">0</button>
+            <button id="decimal">.</button>
+            <button id="equals">=</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            let display = $("#display");
+            let currentValue = "";
+
+
+            $(".num").click(function () {
+                currentValue += $(this).text();
+                display.val(currentValue);
+            });
+
+
+            $("#add, #subtract, #multiply, #divide").click(function () {
+                currentValue += " " + $(this).text() + " ";
+                display.val(currentValue);
+            });
+
+
+            $("#decimal").click(function () {
+                if (!currentValue.includes(".")) {
+                    currentValue += ".";
+                    display.val(currentValue);
+                }
+            });
+
+
+            $("#equals").click(function () {
+                try {
+                    currentValue = eval(currentValue).toString();
+                    display.val(currentValue);
+                } catch (e) {
+                    display.val("Error");
+                    currentValue = "";
+                }
+            });
+
+
+            $("#clear").click(function () {
+                currentValue = "";
+                display.val(currentValue);
+            });
+        });
+    </script>
+
+</body>
+</html>
