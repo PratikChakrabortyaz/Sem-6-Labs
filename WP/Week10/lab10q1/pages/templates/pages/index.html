@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Directory</title>
+</head>
+<body>
+    <h1>Website Directory</h1>
+
+    <h2>Categories</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ category_form.as_p }}
+        <button type="submit" name="category_form">Add Category</button>
+    </form>
+
+    <h3>Existing Categories</h3>
+    <ul>
+        {% for category in categories %}
+            <li>{{ category.name }} (Visits: {{ category.num_visits }}, Likes: {{ category.num_likes }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Pages</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ page_form.as_p }}
+        <button type="submit" name="page_form">Add Page</button>
+    </form>
+
+    <h3>Existing Pages</h3>
+    <ul>
+        {% for page in pages %}
+            <li>{{ page.title }} - <a href="{{ page.url }}" target="_blank">{{ page.url }}</a> (Views: {{ page.views }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

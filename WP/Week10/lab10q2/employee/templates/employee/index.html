@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Database</title>
+</head>
+<body>
+    <h1>Employee Database</h1>
+
+    <h2>Insert WORKS Information</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ works_form.as_p }}
+        <button type="submit" name="works_form">Add Work Info</button>
+    </form>
+
+    <h2>Insert LIVES Information</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ lives_form.as_p }}
+        <button type="submit" name="lives_form">Add Life Info</button>
+    </form>
+
+    <h2>Filter Employees by Company</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ company_filter_form.as_p }}
+        <button type="submit" name="company_filter_form">Filter</button>
+    </form>
+
+    {% if cities %}
+        <h3>Employees working at {{ company_name }}:</h3>
+        <ul>
+            {% for person, city in cities.items %}
+                <li>{{ person }} lives in {{ city }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
