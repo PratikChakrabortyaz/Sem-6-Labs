@@ -1,0 +1,25 @@
+<!-- studentdetails/templates/studentdetails/display_details.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+</head>
+<body>
+    <h1>Student Details</h1>
+    <p><strong>Name:</strong> {{ student.name }}</p>
+    <p><strong>Date of Birth:</strong> {{ student.dob }}</p>
+    <p><strong>Address:</strong> {{ student.address }}</p>
+    <p><strong>Contact Number:</strong> {{ student.contact_number }}</p>
+    <p><strong>Email:</strong> {{ student.email }}</p>
+    <p><strong>English Marks:</strong> {{ student.english_marks }}</p>
+    <p><strong>Physics Marks:</strong> {{ student.physics_marks }}</p>
+    <p><strong>Chemistry Marks:</strong> {{ student.chemistry_marks }}</p>
+    <p><strong>Total Percentage:</strong> {{ percentage }}%</p>
+
+    <h2>Enter Another Student</h2>
+    <a href="{% url 'student_form' %}">Go back to the form</a>
+</body>
+</html>

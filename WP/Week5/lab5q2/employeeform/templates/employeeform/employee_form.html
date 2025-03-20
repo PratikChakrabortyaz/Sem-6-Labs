@@ -1,0 +1,22 @@
+<!-- employeeform/templates/employeeform/employee_form.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Promotion Eligibility</title>
+</head>
+<body>
+    <h1>Employee Promotion Eligibility</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Am I Eligible for Promotion</button>
+    </form>
+
+    {% if promotion_status %}
+        <h3>Eligibility Status: {{ promotion_status }}</h3>
+    {% endif %}
+</body>
+</html>
